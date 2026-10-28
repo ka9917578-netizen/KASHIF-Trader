@@ -266,6 +266,14 @@ footer .f-logo span{color:var(--orange2)}
 .drawer footer p.note{font-size:.78rem;color:var(--muted);margin:6px 0 12px}
 .drawer footer .btn{width:100%;justify-content:center}
 .drawer .empty-cart{text-align:center;color:var(--muted);padding:30px 8px}
+.side-menu{position:fixed;top:0;left:0;bottom:0;width:min(320px,86vw);background:var(--surface);z-index:90;transform:translateX(-105%);visibility:hidden;transition:transform .25s,visibility .25s;display:none;flex-direction:column;box-shadow:12px 0 34px rgba(0,0,0,.25)}
+.side-menu.show{transform:none;visibility:visible;display:flex}
+.side-menu header{display:flex;align-items:center;justify-content:space-between;padding:16px;border-bottom:1px solid var(--line)}
+.side-menu header h3{margin:0}
+.side-menu .side-links{flex:1;overflow:auto;padding:14px 16px;display:grid;gap:8px;align-content:start}
+.side-menu .side-links button,.side-menu .side-links a{display:block;width:100%;text-align:left;background:var(--surface2);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:11px 13px;font-weight:700;font-size:.95rem;text-decoration:none;cursor:pointer}
+.side-menu .side-links button.active{background:var(--orange);color:#fff;border-color:var(--orange)}
+.side-menu .side-links .side-head{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:800;padding:8px 2px 2px}
 
 .modal{position:fixed;inset:0;z-index:95;display:none;place-items:center;padding:16px}
 .modal.show{display:grid}
@@ -339,6 +347,7 @@ footer .f-logo span{color:var(--orange2)}
 
 <header class="site">
   <div class="wrap header-in">
+    <button class="hbtn" id="menuBtn" aria-label="Open side menu">☰ Menu</button>
     <form class="searchbar" id="searchForm" role="search">
       <input id="searchInput" type="search" placeholder="Search products… try “earbuds”, “keyboard”, “kurta”" aria-label="Search products">
       <button type="submit"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>Search</button>
@@ -388,14 +397,6 @@ footer .f-logo span{color:var(--orange2)}
     <div class="notice-in"><strong>Please note:</strong><span>This public page is for <b>browsing only</b>. Accounts, saved orders and online card payments are <b>not live</b> on this static version, and nothing you add to “My List” is saved or sent anywhere. To place a real order, tap any WhatsApp button or call us — we confirm every order personally and offer Cash on Delivery.</span></div>
   </div>
 
-  <!-- CATEGORIES -->
-  <section class="block" id="categories">
-    <div class="wrap">
-      <div class="sec-head"><div><h2>Shop by Category</h2><p>Six departments, all stocked and sold by Kashif Traders.</p></div></div>
-      <div class="cat-grid" id="catGrid"></div>
-    </div>
-  </section>
-
   <!-- PRODUCTS -->
   <section class="block" id="products">
     <div class="wrap">
@@ -416,6 +417,13 @@ footer .f-logo span{color:var(--orange2)}
         <div class="rate-note" id="rateNote"></div>
       </div>
       <div class="grid" id="grid"></div>
+    </div>
+  </section>
+  <!-- CATEGORIES -->
+  <section class="block" id="categories">
+    <div class="wrap">
+      <div class="sec-head"><div><h2>Shop by Category</h2><p>Six departments, all stocked and sold by Kashif Traders.</p></div></div>
+      <div class="cat-grid" id="catGrid"></div>
     </div>
   </section>
 
@@ -534,6 +542,11 @@ footer .f-logo span{color:var(--orange2)}
 </footer>
 
 <a class="fab-wa" href="https://wa.me/923096929813?text=Assalam-o-Alaikum%20Kashif%20Traders%2C%20I%20want%20to%20ask%20about%20a%20product." target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.1-.3.3-.1.6.1.3.7 1.2 1.6 1.9 1.1.9 2 1.2 2.3 1.3.3.1.5.1.6-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4 0 .1 0 .6-.2 1.2Z"/></svg></a>
+
+<aside class="side-menu" id="sideMenu" aria-label="Side menu">
+  <header><h3>Menu</h3><button class="x-btn" id="sideClose" aria-label="Close side menu">✕</button></header>
+  <div class="side-links" id="sideLinks"></div>
+</aside>
 
 <div class="overlay" id="overlay"></div>
 
@@ -691,6 +704,7 @@ function renderCats(){
     return '<button class="cat-card" data-cat="' + c.id + '"><span class="cat-ic">' + c.icon + '</span><span><h3>' + c.name + '</h3><p>' + c.desc + '</p><span class="cnt">' + n + ' sample products →</span></span></button>';
   }).join("");
   document.getElementById("footCats").innerHTML = CATEGORIES.map(function(c){ return '<li><a href="#products" data-cat-link="' + c.id + '">' + c.name + '</a></li>'; }).join("");
+  document.getElementById("sideLinks").innerHTML = '<div class="side-head">Shop</div><button data-cat="all" class="' + (activeCat==="all"?"active":"") + '">All Products</button>' + CATEGORIES.map(function(c){ return '<button data-cat="' + c.id + '" class="' + (activeCat===c.id?"active":"") + '">' + c.name + '</button>'; }).join("") + '<div class="side-head">Help</div><a href="#categories">Shop by Category</a><a href="#how">How to Order</a><a href="#faq">FAQs</a><a href="#contact">Contact Us</a>';
   bindCatControls();
 }
 function bindCatControls(){
@@ -702,6 +716,7 @@ function bindCatControls(){
   });
 }
 function setCat(c){
+  document.getElementById("sideMenu").classList.remove("show");
   activeCat = c; renderCats(); renderProducts();
   document.getElementById("products").scrollIntoView({behavior:"smooth"});
 }
@@ -797,6 +812,7 @@ function renderDrawer(){
 }
 function openDrawer(){ document.getElementById("drawer").classList.add("show"); document.getElementById("overlay").classList.add("show"); }
 function closeAll(){
+  document.getElementById("sideMenu").classList.remove("show");
   document.getElementById("drawer").classList.remove("show");
   document.getElementById("modal").classList.remove("show");
   document.getElementById("overlay").classList.remove("show");
@@ -842,6 +858,8 @@ document.getElementById("wishBtn").addEventListener("click", function(){
   var n = Object.keys(wishlist).length;
   toast(n ? ("You have " + n + " item(s) in your wishlist (this visit only — not saved)") : "Your wishlist is empty — tap the heart on any product");
 });
+document.getElementById("menuBtn").addEventListener("click", function(){ document.getElementById("sideMenu").classList.add("show"); document.getElementById("overlay").classList.add("show"); });
+document.getElementById("sideClose").addEventListener("click", closeAll);
 document.getElementById("drawerClose").addEventListener("click", closeAll);
 document.getElementById("overlay").addEventListener("click", closeAll);
 document.getElementById("modalClose").addEventListener("click", closeAll);
