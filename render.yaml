@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: kashif-traders
+    env: static
+    buildCommand: ""
+    staticPublishPath: .
