@@ -388,7 +388,7 @@ footer .f-logo span{color:var(--orange2)}
   <div class="wrap">
     <div class="tb-group">
       <span>Pakistan-wide browsing</span>
-      <span>Cash on Delivery available when you order</span>
+      <span>Cash on Delivery, JazzCash, Easypaisa &amp; Bank Transfer available when you order</span>
     </div>
     <div class="tb-group">
       <span class="rate-pill" id="ratePill"><span class="rate-dot" id="rateDot"></span><span id="ratePillText">USD rate: checking live rate…</span></span>
@@ -428,7 +428,7 @@ footer .f-logo span{color:var(--orange2)}
         <h1>Everything you need, <em>one trusted store</em> in Pakistan.</h1>
         <p class="lead">Kashif Traders — Your One-Stop Online Shopping Store. Computer accessories, mobile gear, fashion, electrical materials, home &amp; kitchen and gadgets, with clear prices in both PKR and USD.</p>
         <div class="hero-points">
-          <span>Prices in PKR + USD</span><span>Cash on Delivery</span><span>Order on WhatsApp</span><span>Delivery across Pakistan</span>
+          <span>Prices in PKR + USD</span><span>COD • JazzCash • Easypaisa • Bank Transfer</span><span>Order on WhatsApp</span><span>Delivery across Pakistan</span>
         </div>
         <div class="hero-cta">
           <a class="btn btn-orange" href="#products">Shop Now</a>
@@ -556,7 +556,7 @@ footer .f-logo span{color:var(--orange2)}
       <div class="sec-head"><div><h2>Frequently Asked Questions</h2></div></div>
       <details class="faq"><summary>How do I place an order on this page?</summary><p>Add products to “My List” and tap “Order on WhatsApp”, or use the WhatsApp button on any product. We confirm stock, delivery time and the final total with you personally before dispatch.</p></details>
       <details class="faq"><summary>Why are there two prices on every product?</summary><p>The main price is in Pakistani Rupees (PKR). The dollar price is the same amount converted at the USD/PKR rate shown at the top of this page. When the live market rate loads, USD prices update automatically; if it cannot load, the page clearly labels the fallback rate of Rs 280 = $1 instead of pretending it is live.</p></details>
-      <details class="faq"><summary>Can I pay online by card, JazzCash or Easypaisa here?</summary><p>Not on this public browsing page. Online payments are not live here — Cash on Delivery is the payment method we confirm on WhatsApp or by phone.</p></details>
+      <details class="faq"><summary>Which payment methods can I use?</summary><p>Cash on Delivery, JazzCash, Easypaisa and Bank Transfer. These are manual options — no online payment is taken on this page. Choose your method when you order on WhatsApp: for JazzCash, Easypaisa or Bank Transfer we share the account details on WhatsApp, you pay manually, and we confirm after you send the payment screenshot. Cash on Delivery means you pay in cash when your order arrives.</p></details>
       <details class="faq"><summary>Who sells the products on Kashif Traders?</summary><p>Only Kashif Traders. This is a single-seller store: every product listed here is stocked and sold by Kashif Traders itself, and we handle your order, delivery questions and returns directly.</p></details>
       <details class="faq"><summary>What if my product arrives damaged?</summary><p>Message us on WhatsApp or call +92 309 6929813 with your order details and a photo. We will arrange a replacement or refund according to the return terms confirmed with your order.</p></details>
     </div>
@@ -594,7 +594,7 @@ footer .f-logo span{color:var(--orange2)}
       </ul>
     </div>
   </div>
-  <div class="foot-note"><div class="wrap">© 2026 Kashif Traders. Prices are shown in PKR with USD converted at the rate displayed on this page. This public version is for browsing only — accounts, saved orders and online payments are not live here; orders are confirmed personally on WhatsApp or by phone with Cash on Delivery.</div></div>
+  <div class="foot-note"><div class="wrap">© 2026 Kashif Traders. Prices are shown in PKR with USD converted at the rate displayed on this page. This public version is for browsing only — accounts, saved orders and online payments are not live here; orders are confirmed personally on WhatsApp or by phone. Payment methods: Cash on Delivery, JazzCash, Easypaisa and Bank Transfer (manual payment only — no online payment is taken here).</div></div>
 </footer>
 
 <a class="fab-wa" href="https://wa.me/923096929813?text=Assalam-o-Alaikum%20Kashif%20Traders%2C%20I%20want%20to%20ask%20about%20a%20product." target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.1-.3.3-.1.6.1.3.7 1.2 1.6 1.9 1.1.9 2 1.2 2.3 1.3.3.1.5.1.6-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4 0 .1 0 .6-.2 1.2Z"/></svg></a>
@@ -613,7 +613,14 @@ footer .f-logo span{color:var(--orange2)}
     <div class="tot"><span>Total</span><span id="drawerTotalPkr">Rs 0</span></div>
     <div class="tot-u" id="drawerTotalUsd"></div>
     <p class="note" id="drawerRateNote"></p>
-    <p class="note">This list lives only on this screen — it is not saved and it is not an order yet. Sending it on WhatsApp starts your order; we confirm stock and delivery before dispatch. Cash on Delivery.</p>
+    <p class="note">This list lives only on this screen — it is not saved and it is not an order yet. Sending it on WhatsApp starts your order; we confirm stock and delivery before dispatch.</p>
+    <fieldset style="border:1px solid #dbe7dc;border-radius:10px;padding:10px;margin:0 0 10px;text-align:left"><legend style="font-weight:700;font-size:.85rem;padding:0 6px">Payment method</legend>
+      <label style="display:block;font-size:.88rem;padding:3px 0"><input type="radio" name="payMethod" value="Cash on Delivery (COD)" checked onchange="renderDrawer()"> Cash on Delivery</label>
+      <label style="display:block;font-size:.88rem;padding:3px 0"><input type="radio" name="payMethod" value="JazzCash" onchange="renderDrawer()"> JazzCash</label>
+      <label style="display:block;font-size:.88rem;padding:3px 0"><input type="radio" name="payMethod" value="Easypaisa" onchange="renderDrawer()"> Easypaisa</label>
+      <label style="display:block;font-size:.88rem;padding:3px 0"><input type="radio" name="payMethod" value="Bank Transfer" onchange="renderDrawer()"> Bank Transfer</label>
+      <p style="font-size:.8rem;color:var(--muted);margin:6px 0 0">JazzCash / Easypaisa / Bank Transfer: manual payment only. We share the account details on WhatsApp — pay, then send the screenshot. No online payment is taken on this page.</p>
+    </fieldset>
     <a class="btn btn-wa" id="drawerOrder" href="#" target="_blank" rel="noopener" style="display:none">Order This List on WhatsApp</a>
   </footer>
 </aside>
@@ -861,7 +868,8 @@ function renderDrawer(){
   document.getElementById("drawerTotalPkr").textContent = pkr(total);
   document.getElementById("drawerTotalUsd").textContent = "≈ " + usd(total) + " USD";
   orderBtn.style.display = "";
-  orderBtn.href = waLink("Assalam-o-Alaikum Kashif Traders, I want to order:\n" + lines.join("\n") + "\nTotal: " + pkr(total) + " (≈ " + usd(total) + " USD)\nPlease confirm stock, delivery charges and time. My name and city: ");
+  var payEl = document.querySelector("input[name=\"payMethod\"]:checked"); var payMethod = payEl ? payEl.value : "Cash on Delivery (COD)";
+  orderBtn.href = waLink("Assalam-o-Alaikum Kashif Traders, I want to order:\n" + lines.join("\n") + "\nTotal: " + pkr(total) + " (≈ " + usd(total) + " USD)\nPayment method: " + payMethod + "\nPlease confirm stock, delivery charges and time. My name and city: ");
   box.querySelectorAll("[data-inc]").forEach(function(b){ b.addEventListener("click", function(){ var id=b.getAttribute("data-inc"); cart[id]++; updateBadges(); renderDrawer(); }); });
   box.querySelectorAll("[data-dec]").forEach(function(b){ b.addEventListener("click", function(){ var id=b.getAttribute("data-dec"); cart[id]--; if(cart[id]<=0) delete cart[id]; updateBadges(); renderDrawer(); }); });
   box.querySelectorAll("[data-rm]").forEach(function(b){ b.addEventListener("click", function(){ delete cart[b.getAttribute("data-rm")]; updateBadges(); renderDrawer(); }); });
