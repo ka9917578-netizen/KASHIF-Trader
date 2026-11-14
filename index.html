@@ -70,7 +70,12 @@ button{font-family:inherit;cursor:pointer}
 .rate-dot.fallback{background:#ffb020}
 
 /* header */
-header.site{position:sticky;top:0;z-index:60;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.12)}
+.site-head{position:sticky;top:0;z-index:70;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.12)}
+header.site{position:static;background:#fff}
+.bottom-bar{position:fixed;left:0;right:0;bottom:0;z-index:70;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:space-around;align-items:center;padding:8px 4px calc(8px + env(safe-area-inset-bottom));box-shadow:0 -2px 12px rgba(0,0,0,.12)}
+.bottom-bar a{display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:#14532d;font-size:.72rem;font-weight:700;padding:4px 10px}
+.bottom-bar a span.ic{font-size:1.15rem;line-height:1}
+body{padding-bottom:58px}
 .header-in{display:flex;align-items:center;gap:10px;padding:8px 0;flex-wrap:nowrap}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff}
 .logo-badge{width:44px;height:44px;border-radius:12px;background:var(--orange);display:grid;place-items:center;color:#fff}
@@ -332,6 +337,7 @@ footer .f-logo span{color:var(--orange2)}
 </head>
 <body>
 
+<div class="site-head">
 <div class="brand-top">
   <div class="wrap brand-top-in">
     <a class="brand-logo" href="#top" aria-label="Kashif Traders home">
@@ -376,6 +382,7 @@ footer .f-logo span{color:var(--orange2)}
   <div class="wrap" id="catNav"></div>
 </nav>
 
+</div>
 <main id="top">
   <!-- HERO -->
   <div class="hero">
@@ -902,5 +909,11 @@ renderDrawer();
 updateBadges();
 fetchRate();
 </script>
+<nav class="bottom-bar" aria-label="Quick links">
+<a href="#top"><span class="ic">🏠</span>Home</a>
+<a href="#products"><span class="ic">🛍️</span>All Products</a>
+<a href="#categories"><span class="ic">📂</span>Categories</a>
+<a href="https://wa.me/923096929813" target="_blank" rel="noopener"><span class="ic">💬</span>WhatsApp</a>
+</nav>
 </body>
 </html>
