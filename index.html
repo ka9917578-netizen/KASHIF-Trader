@@ -70,8 +70,8 @@ button{font-family:inherit;cursor:pointer}
 .rate-dot.fallback{background:#ffb020}
 
 /* header */
-header.site{position:sticky;top:0;z-index:60;background:var(--navy2);box-shadow:0 2px 14px rgba(0,0,0,.25)}
-.header-in{display:flex;align-items:center;gap:14px;padding:12px 0;flex-wrap:wrap}
+header.site{position:sticky;top:0;z-index:60;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.12)}
+.header-in{display:flex;align-items:center;gap:10px;padding:8px 0;flex-wrap:nowrap}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff}
 .logo-badge{width:44px;height:44px;border-radius:12px;background:var(--orange);display:grid;place-items:center;color:#fff}
 .logo-img{width:56px;height:56px;border-radius:14px;object-fit:cover;box-shadow:0 4px 14px rgba(0,0,0,.25)}
@@ -79,20 +79,21 @@ header.site{position:sticky;top:0;z-index:60;background:var(--navy2);box-shadow:
 .logo-name{font-weight:800;font-size:1.28rem;letter-spacing:.2px;line-height:1.05}
 .logo-name span{color:var(--orange2)}
 .logo-tag{font-size:.68rem;color:#b9c9e4;font-weight:600;letter-spacing:.4px;text-transform:uppercase}
-.searchbar{flex:1 1 300px;display:flex;background:#fff;border-radius:999px;overflow:hidden;border:2px solid transparent}
+.searchbar{flex:1 1 300px;display:flex;background:#f1f1f1;border-radius:999px;overflow:hidden;border:2px solid transparent;min-width:0}
 .searchbar:focus-within{border-color:var(--orange)}
-.searchbar input{flex:1;border:0;outline:0;padding:11px 16px;font-size:.95rem;font-family:inherit;color:#16233c;min-width:0}
-.searchbar button{border:0;background:var(--orange);color:#fff;padding:0 20px;font-weight:700;display:flex;align-items:center;gap:6px}
+.searchbar input{flex:1;border:0;outline:0;padding:10px 12px;font-size:.95rem;font-family:inherit;color:#16233c;min-width:0;background:transparent}
+.searchbar button{border:0;background:#14532d;color:#fff;padding:0 18px;font-weight:700;display:flex;align-items:center;gap:6px}
+.cam-btn{border:0;background:transparent;color:#555;padding:0 10px;cursor:pointer;display:flex;align-items:center}
 .header-actions{display:flex;gap:8px;align-items:center}
-.mini-logo{display:none;align-items:center;gap:8px;text-decoration:none;color:#fff;font-weight:800;font-size:.95rem;letter-spacing:.2px;white-space:nowrap}
+.mini-logo{display:none;align-items:center;gap:8px;text-decoration:none;color:#14532d;font-weight:800;font-size:.95rem;letter-spacing:.2px;white-space:nowrap}
 .mini-logo span{color:var(--orange2)}
 body.scrolled .mini-logo{display:inline-flex}
-body.scrolled .header-in{padding:6px 0;gap:10px}
+body.scrolled .header-in{padding:6px 0;gap:8px}
 body.scrolled .searchbar input{padding:7px 12px;font-size:.9rem}
 body.scrolled .searchbar button{padding:0 14px}
 body.scrolled .wa-cta{padding:7px 12px;font-size:.85rem}
 body.scrolled .hbtn{padding:4px 6px}
-.hbtn{position:relative;display:flex;flex-direction:column;align-items:center;gap:1px;background:transparent;border:0;color:#e7eef9;font-size:.68rem;font-weight:600;padding:6px 8px;border-radius:10px;text-decoration:none}
+.hbtn{position:relative;display:flex;flex-direction:column;align-items:center;gap:1px;background:transparent;border:0;color:#14532d;font-size:.68rem;font-weight:600;padding:6px 8px;border-radius:10px;text-decoration:none;flex-shrink:0}
 .hbtn:hover{background:rgba(255,255,255,.1)}
 .hbtn .count[hidden]{display:none}
 .hbtn .count{position:absolute;top:0;right:2px;background:var(--orange);color:#fff;font-size:.65rem;font-weight:800;min-width:18px;height:18px;border-radius:999px;display:grid;place-items:center;padding:0 4px}
@@ -102,8 +103,8 @@ body.scrolled .hbtn{padding:4px 6px}
 /* category nav */
 .catnav{background:var(--surface);border-bottom:1px solid var(--line)}
 .catnav .wrap{display:flex;gap:6px;flex-wrap:wrap;padding-top:9px;padding-bottom:9px}
-.catnav button{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:7px 14px;font-weight:600;font-size:.86rem}
-.catnav button.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.catnav button{border:0;border-bottom:2px solid transparent;background:transparent;color:var(--ink);border-radius:0;padding:8px 12px;font-weight:700;font-size:.92rem}
+.catnav button.active{background:transparent;color:#16a34a;border-color:#16a34a}
 .catnav button:hover{border-color:var(--orange);color:var(--orange)}
 .catnav button.active:hover{color:#fff}
 
@@ -360,7 +361,8 @@ footer .f-logo span{color:var(--orange2)}
     <a class="mini-logo" href="#top">KASHIF <span>TRADERS</span></a>
     <form class="searchbar" id="searchForm" role="search">
       <input id="searchInput" type="search" placeholder="Search products… try “earbuds”, “keyboard”, “kurta”" aria-label="Search products">
-      <button type="submit"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>Search</button>
+      <button type="button" class="cam-btn" aria-label="Search by photo" title="Search by photo"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2Z"/><circle cx="12" cy="13" r="4"/></svg></button>
+      <button type="submit"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg></button>
     </form>
     <div class="header-actions">
       <button class="hbtn" id="wishBtn" aria-label="Wishlist"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19.5 12.6 12 20l-7.5-7.4A5 5 0 1 1 12 6.2a5 5 0 1 1 7.5 6.4Z"/></svg>Wishlist<span class="count" id="wishCount" hidden>0</span></button>
